@@ -11,6 +11,13 @@ mongoose.connection.once('open', () => {
     console.log(`There is an error in connecting database: ${error}`);
 });
 
+// Template engine
+app.set('views', 'views');
+app.set('view engine', 'ejs');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // Route
 const router = require('./router.js')
 app.use('/', router)
